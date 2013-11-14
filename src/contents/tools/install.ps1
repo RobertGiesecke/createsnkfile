@@ -11,18 +11,25 @@ if(!$msBuildV4) {
     throw New-Object System.IO.FileNotFoundException("Could not load $msBuildV4Name.");
 }
 
-$projectDir = [System.IO.Path]::GetDirectoryName($project.FullName);
-$dummyPath = [System.IO.Path]::Combine($projectDir, "SnkNugetWorkaround.txt");
 
-$dummyProjectItem = $project.ProjectItems.Item("SnkNugetWorkaround.txt");
+$projectItemExists = $false;
+try {
+    $dummyProjectItem = $project.ProjectItems.Item("SnkNugetWorkaround.txt");
+    $projectItemExists = $true;
+} catch [Exception] { 
+    $projectDir = [System.IO.Path]::GetDirectoryName($project.FullName);
+    $dummyPath = [System.IO.Path]::Combine($projectDir, "SnkNugetWorkaround.txt");
 
-if($dummyProjectItem) {
-    $dummyProjectItem.Remove();
+    if([System.IO.File]::Exists($dummyPath)) {
+        [System.IO.File]::Delete($dummyPath);
+        Write-Host "Removed dummy file $dummyPath.";
+    }
 }
 
-if([System.IO.File]::Exists($dummyPath)) {
-    [System.IO.File]::Delete($dummyPath);
-    Write-Host "Removed dummy file $dummyPath.";
+if($projectItemExists) {    
+    if($dummyProjectItem) {
+        $dummyProjectItem.Delete();
+    }
 }
 
 $msBuildV4.GetType('Microsoft.Build.Evaluation.ProjectCollection')::GlobalProjectCollection.GetLoadedProjects($project.FullName) | % {
