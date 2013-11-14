@@ -3,7 +3,7 @@
   <metadata>
     <id>CreateSnkFile</id>
     <version>1.0.1</version>
-    <title>Auto create SNK file</title>
+    <title>Auto create missing SNK files on build</title>
     <authors>Robert Giesecke</authors>
     <owners>Robert Giesecke</owners>
     <projectUrl>https://github.com/robertgiesecke/createsnkfile</projectUrl>
