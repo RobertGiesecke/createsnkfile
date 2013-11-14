@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Project  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup Condition="'$(KeyOriginatorFile)' != ''">
+  <PropertyGroup>
     <CoreCompileDependsOn>
       InitializeSnkFile;$(CoreCompileDependsOn)
     </CoreCompileDependsOn>
@@ -21,7 +21,7 @@
             Language="cs">
         <![CDATA[
       var fullSnkFileName = Path.GetFullPath(SnkFilePath);
-      //throw new Exception();
+
       if(!File.Exists(fullSnkFileName))
       {  
         var args = string.Format(" -k \"{0}\"", fullSnkFileName);

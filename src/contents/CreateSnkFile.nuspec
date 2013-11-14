@@ -3,7 +3,7 @@
   <metadata>
     <id>CreateSnkFile</id>
     <version>1.0.1</version>
-    <title>Auto create SNK file</title>
+    <title>Auto create missing SNK files on build</title>
     <authors>Robert Giesecke</authors>
     <owners>Robert Giesecke</owners>
     <projectUrl>https://github.com/robertgiesecke/createsnkfile</projectUrl>
@@ -21,9 +21,4 @@
     <language>en-US</language>
     <tags>snk strongname sn.exe KeyOriginatorFile</tags>
   </metadata>
-  <files>
-    <file src="tools\install.ps1" target="tools\install.ps1" />
-    <file src="tools\uninstall.ps1" target="tools\uninstall.ps1" />
-    <file src="tools\CreateSnkFile.targets" target="tools\CreateSnkFile.targets" />
-  </files>
 </package>
