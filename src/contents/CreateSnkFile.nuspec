@@ -21,9 +21,4 @@
     <language>en-US</language>
     <tags>snk strongname sn.exe KeyOriginatorFile</tags>
   </metadata>
-  <files>
-    <file src="tools\install.ps1" target="tools\install.ps1" />
-    <file src="tools\uninstall.ps1" target="tools\uninstall.ps1" />
-    <file src="tools\CreateSnkFile.targets" target="tools\CreateSnkFile.targets" />
-  </files>
 </package>
