@@ -21,7 +21,7 @@
             Language="cs">
         <![CDATA[
       var fullSnkFileName = Path.GetFullPath(SnkFilePath);
-      //throw new Exception();
+
       if(!File.Exists(fullSnkFileName))
       {  
         var args = string.Format(" -k \"{0}\"", fullSnkFileName);
