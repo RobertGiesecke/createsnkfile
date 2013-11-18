@@ -47,3 +47,8 @@ $msBuildV4.GetType('Microsoft.Build.Evaluation.ProjectCollection')::GlobalProjec
 	$import = $currentProject.Xml.AddImport($relativeUrl)
 	$import.Condition = "Exists('$relativeUrl')";
 }
+
+Import-Module (Join-Path $toolsPath "mark-as-developmentDependency.psm1");
+
+# Set this NuGet Package to be installed as a Development Dependency.
+Set-PackageToBeDevelopmentDependency -PackageId $package.Id -ProjectDirectoryPath ([System.IO.Directory]::GetParent($project.FullName))
