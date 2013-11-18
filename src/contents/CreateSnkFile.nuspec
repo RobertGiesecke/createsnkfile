@@ -19,6 +19,7 @@
 		You do want to sign your assemblies, but you don't want to give away the key file.
     </description>
     <language>en-US</language>
+	<releaseNotes>Uses Daniel Schroeder's script to mark itself as developmentDependency. http://blog.danskingdom.com/have-your-nuget-package-install-itself-as-a-development-dependency/</releaseNotes>
     <tags>snk strongname sn.exe KeyOriginatorFile</tags>
   </metadata>
 </package>
