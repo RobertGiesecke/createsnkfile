@@ -1,25 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
-  <metadata>
-    <id>CreateSnkFile</id>
-    <version>1.0.1.1</version>
-    <title>Auto create missing SNK files on build</title>
-    <authors>Robert Giesecke</authors>
-    <owners>Robert Giesecke</owners>
-    <projectUrl>https://github.com/robertgiesecke/createsnkfile</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <summary>
-      Will create missing key files during the build.
-	  One less thing to explain in open source projects. :-)
-    </summary>
-    <licenseUrl>http://opensource.org/licenses/mit-license.php</licenseUrl>
-    <description>
-      This is an msbuild target that will try to create the key file that is used by the project it is installed to when it doesn't exist already.
+    <metadata>
+        <id>CreateSnkFile</id>
+        <version>1.0.1.2</version>
+        <title>Auto create missing SNK files on build</title>
+        <authors>Robert Giesecke</authors>
+        <owners>Robert Giesecke</owners>
+        <licenseUrl>http://opensource.org/licenses/mit-license.php</licenseUrl>
+        <projectUrl>https://github.com/robertgiesecke/createsnkfile</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <developmentDependency>true</developmentDependency>
+        <description>This is an msbuild target that will try to create the key file that is used by the project it is installed to when it doesn't exist already.
 	  Which is a well known problem for open source projects: 
-		You do want to sign your assemblies, but you don't want to give away the key file.
-    </description>
-    <language>en-US</language>
-	<releaseNotes>Uses Daniel Schroeder's script to mark itself as developmentDependency. http://blog.danskingdom.com/have-your-nuget-package-install-itself-as-a-development-dependency/</releaseNotes>
-    <tags>snk strongname sn.exe KeyOriginatorFile</tags>
-  </metadata>
+		You do want to sign your assemblies, but you don't want to give away the key file.</description>
+        <summary>Will create missing key files during the build.
+	  One less thing to explain in open source projects. :-)</summary>
+        <releaseNotes>- moved to the new way to auto-install .targets files
+
+- changed how Microsoft.Build.Tasks.v*.dll is resolved, should be much more "future roof" (if there's such a thing in .Net development)</releaseNotes>
+        <language>en-US</language>
+        <tags>snk strongname sn.exe KeyOriginatorFile</tags>
+    </metadata>
+    <files>
+        <file src="build\CreateSnkFile.targets" target="build\CreateSnkFile.targets" />
+    </files>
 </package>
