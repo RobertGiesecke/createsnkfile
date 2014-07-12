@@ -8,7 +8,7 @@
 
   <UsingTask TaskName="CreateSnkIfItDoesNotExist"
              TaskFactory="Microsoft.Build.Tasks.CodeTaskFactory"
-             AssemblyFile="$(MSBuildToolsPath)/Microsoft.Build.Tasks.v4.0.dll">
+             AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v$(MSBuildToolsVersion).dll">
     <ParameterGroup>
       <SnkFilePath Required="true"
                    ParameterType="System.String"/>
