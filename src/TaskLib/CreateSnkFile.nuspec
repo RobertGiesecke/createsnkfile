@@ -16,8 +16,7 @@
         <summary>Will create missing key files during the build.
 	  One less thing to explain in open source projects. :-)</summary>
         <releaseNotes>- moved to the new way to auto-install .targets files
-
-- changed how Microsoft.Build.Tasks.v*.dll is resolved, should be much more "future roof" (if there's such a thing in .Net development)</releaseNotes>
+- no longer requires Microsoft.Build.Tasks.v*.dll</releaseNotes>
         <language>en-US</language>
         <tags>snk strongname sn.exe KeyOriginatorFile</tags>
     </metadata>

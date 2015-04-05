@@ -8,3 +8,6 @@ It is just an msbuild target that is executed before the actual CoreCompile. It 
 If it doesn't, it will create one with that filename/path.
 
 To use it, just install the [nuget package](https://www.nuget.org/packages/CreateSnkFile) into every project that is signed with a key file.
+
+I changed it to use a custom MSBuild Task instead of CodeTaskFactory.  
+It should work on Mono now and won't break every time some joker at Microsoft decides to change where to find the Tasks.v*.dll.
