@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <BuildDependsOn>
+      $(BuildDependsOn);
+      SnkBuildNugetPackage
+    </BuildDependsOn>
+  </PropertyGroup>
+
+  <Target Name="SnkBuildNugetPackage" DependsOnTargets="CoreBuild">
+    <MakeDir Condition="!exists('Packaged')" Directories="Packaged"/>
+    <Exec Command="$(NuGetCommand) pack &quot;CreateSnkFile.nuspec&quot; -OutputDirectory &quot;Packaged&quot; -Properties &quot;configuration=$(Configuration);id=$(AssemblyName)&quot;" ConsoleToMSBuild="true" WorkingDirectory="$(MSBuildProjectDirectory)"></Exec>
+  </Target>
+</Project>
