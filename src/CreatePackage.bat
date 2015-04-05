@@ -1,1 +1,0 @@
-"%~dp0.nuget\NuGet.exe" pack "%~dp0contents\CreateSnkFile.nuspec"

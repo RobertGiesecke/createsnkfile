@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <BuildDependsOn>
+      $(BuildDependsOn);
+      SnkBuildNugetPackage
+    </BuildDependsOn>
+  </PropertyGroup>
+
+  <Target Name="SnkBuildNugetPackage"
+          DependsOnTargets="CoreBuild">
+    <XmlPeek XmlInputPath="$(SolutionDir).nuget/packages.config"
+             Query="/packages/package[@id='NuGet.CommandLine']/@version">
+      <Output TaskParameter="Result" ItemName="NugetCommandLineVersionItem"/>
+    </XmlPeek>
+    <PropertyGroup>
+      <NugetCommandLineVersion Condition="'$(NugetCommandLineVersion)' == ''">@(NugetCommandLineVersionItem)</NugetCommandLineVersion>
+    </PropertyGroup>
+
+    <CreateProperty Condition="'$(SnkNugetPath)' == ''"
+                    Value="$(SolutionDir)packages/NuGet.CommandLine.$(NugetCommandLineVersion)\tools\NuGet.exe">
+      <Output TaskParameter="Value" PropertyName="SnkNugetPath"></Output>
+    </CreateProperty>
+    
+    <MakeDir Condition="!exists('Packaged')" Directories="Packaged"/>
+    <Exec Condition="'$(SnkNugetPath)' !=''" Command="$(SnkNugetPath) pack &quot;CreateSnkFile.nuspec&quot; -OutputDirectory &quot;Packaged&quot; -Properties &quot;configuration=$(Configuration);id=$(AssemblyName)&quot;" WorkingDirectory="$(MSBuildProjectDirectory)"></Exec>
+  </Target>
+</Project>
